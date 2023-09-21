@@ -71,8 +71,11 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));   // 모든 출처에 대해 스크립트 기반의 HTTP 통신을 허용
-        configuration.setAllowedMethods(Arrays.asList("POST", "PATCH", "GET", "DELETE"));  // HTTP Method에 대한 HTTP 통신을 허용
+        configuration.setAllowedOrigins(Arrays.asList("http://33team.s3-website.ap-northeast-2.amazonaws.com/",
+                "http://localhost:8080/",
+                "http://localhost:3000"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("Authorization", "Refresh", "MemberId"));
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
